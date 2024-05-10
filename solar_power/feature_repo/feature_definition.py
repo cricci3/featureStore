@@ -18,7 +18,7 @@ f_source1 = FileSource(
 # Defining the first set of features
 df1_fv = FeatureView(
     name="df1_feature_view",
-    ttl=timedelta(days=3),
+    ttl=timedelta(days=100),
     entities=[sensor_data],
     schema=[
         Field(name="PLANT_ID", dtype=Int64),
@@ -36,7 +36,7 @@ f_source2 = FileSource(
 # Defining the second set of features
 df2_fv = FeatureView(
     name="df2_feature_view",
-    ttl=timedelta(days=3),
+    ttl=timedelta(days=100),
     entities=[sensor_data],
     schema=[
         Field(name="DC_POWER", dtype=Float32),
@@ -54,7 +54,7 @@ f_source3 = FileSource(
 # Defining the third set of features
 df3_fv = FeatureView(
     name="df3_feature_view",
-    ttl=timedelta(days=3),
+    ttl=timedelta(days=100),
     entities=[sensor_data],
     schema=[
         Field(name="DAILY_YIELD", dtype=Float32),
@@ -73,7 +73,7 @@ target_source = FileSource(
 target_fv = FeatureView(
     name="target_feature_view",
     entities=[sensor_data],
-    ttl=timedelta(days=3),
+    ttl=timedelta(days=100),
     schema=[
         Field(name="TARGET", dtype=Int64)
         ],
