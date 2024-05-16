@@ -9,6 +9,8 @@ consumer_data = Entity(
     value_type=ValueType.INT64,
     description="The ID of the consumer")
 
+# -----------------------------------------------------------------
+
 # Declaring the source of the first set of features
 f_source1 = FileSource(
     path=r"data/data_df1_2.parquet",
@@ -26,6 +28,8 @@ df1_fv = FeatureView(
     ],
     source=f_source1
 )
+
+# -----------------------------------------------------------------
 
 # Declaring the source of the second set of features
 f_source2 = FileSource(
@@ -47,6 +51,8 @@ df2_fv = FeatureView(
     source=f_source2
 )
 
+# -----------------------------------------------------------------
+
 # Declaring the source of the third set of features
 f_source3 = FileSource(
     path=r"data/data_df3_2.parquet",
@@ -66,6 +72,8 @@ df3_fv = FeatureView(
     source=f_source3
 )
 
+# -----------------------------------------------------------------
+
 # Declaring the source of the fourth set of features
 f_source4 = FileSource(
     path=r"data/data_df4_2.parquet",
@@ -84,6 +92,8 @@ df4_fv = FeatureView(
     ],
     source=f_source4
 )
+
+# -----------------------------------------------------------------
 
 # Declaring the source of the targets
 target_source = FileSource(
