@@ -23,7 +23,7 @@ df1_fv = FeatureView(
     ttl=timedelta(days=2000),
     entities=[consumer_data],
     schema=[
-        Field(name="Gender", dtype=String),
+        Field(name="Gender", dtype=Int64),
         Field(name="Age", dtype=Int64)
     ],
     source=f_source1
