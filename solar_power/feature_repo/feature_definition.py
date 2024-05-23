@@ -1,5 +1,5 @@
 # Importing dependencies
-from feast import Entity, Field, FeatureView, FileSource, ValueType
+from feast import Entity, Field, FeatureView, FileSource, ValueType,FeatureService
 from feast.types import Float32, Int64, String, Float64, Bool
 from datetime import timedelta
 
@@ -110,4 +110,10 @@ target_fv = FeatureView(
         Field(name="Exited", dtype=Int64)
         ],
     source=target_source
+)
+
+chrun_features = FeatureService(
+    name="user_activity",
+    features=[df1_fv, df2_fv,df3_fv,df4_fv],
+    tags={"Description": "Used for training a RandomForest and a  Logistic Regression model"}
 )
