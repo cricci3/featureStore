@@ -112,7 +112,7 @@ target_fv = FeatureView(
     source=target_source
 )
 
-chrun_features = FeatureService(
+churn_features = FeatureService(
     name="user_activity",
     features=[df1_fv, df2_fv,df3_fv,df4_fv],
     tags={"Description": "Used for training a RandomForest and a  Logistic Regression model"}
