@@ -48,6 +48,7 @@ jobs:
 
     - name: Apply Feast feature store
       run: |
+        cd bank_customer/feature_repo
         feast apply
         feast materialize-incremental $(date +%Y-%m-%dT%H:%M:%S)
 
