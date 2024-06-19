@@ -19,46 +19,47 @@ jobs:
           - 6379:6379
         options: >-
           --health-cmd="redis-cli ping"
-          --health-interval=10
-          --health-timeout=5
+          --health-interval=10s
+          --health-timeout=5s
           --health-retries=5
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.8'
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y redis-tools
-          python -m pip install --upgrade pip
-          pip install feast[redis]
-          pip install pytest
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y redis-tools
+        python -m pip install --upgrade pip
+        pip install feast[redis]
+        pip install pytest
 
-      - name: Wait for Redis to be ready
-        run: |
-          until redis-cli -h localhost ping; do
-            echo "Waiting for redis..."
-            sleep 1
-          done
+    - name: Wait for Redis to be ready
+      run: |
+        until redis-cli -h localhost ping; do
+          echo "Waiting for redis..."
+          sleep 1
+        done
 
-      - name: Apply Feast feature store
-        run: |
-          cd bank_customer/feature_repo
-          feast apply
-          feast materialize-incremental $(date +%Y-%m-%dT%H:%M:%S)
+    - name: Apply Feast feature store
+      run: |
+        cd bank_customer/feature_repo
+        feast apply
+        feast materialize-incremental $(date +%Y-%m-%dT%H:%M:%S)
 
-      - name: Run tests
-        run: |
-          pytest tests/
+    - name: Run test
+      run: |
+        cd bank_customer/tests
+        pytest tests/
 
-      - name: Deploy to production
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: |
-          # Commands for deploying to production
-          echo "Deploying to production"
+    - name: Deploy to production
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        # Comandi per il deploy in produzione
+        echo "Deploying to production"
