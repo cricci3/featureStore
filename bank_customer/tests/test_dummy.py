@@ -3,7 +3,7 @@ from datetime import datetime
 from feast import FeatureStore
 
 # Inizializza il client del Feature Store
-feature_store = FeatureStore(repo_path="bank_customer\feature_repo")
+feature_store = FeatureStore(repo_path=r"bank_customer\feature_repo")
 
 @pytest.fixture(scope="module")
 def setup_feature_store():
