@@ -1,7 +1,8 @@
 import pytest
 from feast import FeatureStore
 # Inizializza il client del Feature Store con il percorso corretto al tuo repository
-feature_store = FeatureStore(repo_path=r"./feature_repo")
+feature_store = FeatureStore(repo_path="bank_customer//feature_repo")
+
 
 def test_apply_feature_store():
     try:
